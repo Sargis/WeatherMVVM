@@ -13,7 +13,8 @@ class NetworkManager {
 
     private init() {}
 
-    private func request<T: Codable>(type: T.Type, urlRequest: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
+    private func request<T: Codable>(type: T.Type, urlRequest: URLRequest,
+                                     completion: @escaping (Result<T, Error>) -> Void) {
         let task = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
             if let error = error {
                 completion(.failure(error))
@@ -29,9 +30,9 @@ class NetworkManager {
         }
         task.resume()
     }
-    
+
     func getWeathers(_ city: City, completion: @escaping (Result<Weather, Error>) -> Void) {
-        let urlString = String.init(format: Endpoints.Get.weather.url, city.location.0, city.location.1)
+        let urlString = "\(Endpoints.Get.weather.url)\(city.location.0),\(city.location.1)"
         guard let serviceUrl = URL(string: urlString) else {
             print("Error building URL object")
             return
@@ -40,7 +41,7 @@ class NetworkManager {
         request.httpMethod = "GET"
 
         self.request(type: Weather.self, urlRequest: request) { response in
-            
+            completion(response)
         }
     }
 }

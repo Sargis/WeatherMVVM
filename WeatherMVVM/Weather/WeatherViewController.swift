@@ -26,6 +26,7 @@ class WeatherViewController: UITableViewController {
         self.setupRefreshControl()
         self.setupNavigationBar()
         self.tableView.refreshControl?.beginRefreshing()
+        self.getWeatchers()
     }
 
     private func setupRefreshControl() {

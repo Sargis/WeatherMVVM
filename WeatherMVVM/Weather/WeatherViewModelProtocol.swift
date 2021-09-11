@@ -9,7 +9,7 @@ import Foundation
 
 protocol WeatherViewModelProtocol {
 
-    var weather: [Weather]? { get set }
+    var weather: Weather? { get set }
     var city: City { get set }
 
     func fetchWeathers(_ handler: @escaping ((Error?) -> Void))

@@ -9,7 +9,7 @@ import Foundation
 
 class WeatherViewModel: WeatherViewModelProtocol {
 
-    var weather: [Weather]?
+    var weather: Weather?
     var city: City
 
     init(_ city: City) {
@@ -17,6 +17,13 @@ class WeatherViewModel: WeatherViewModelProtocol {
     }
 
     func fetchWeathers(_ handler: @escaping ((Error?) -> Void)) {
-
+        NetworkManager.shared.getWeathers(self.city) { response in
+            switch response {
+            case .success(let weather):
+                print(weather)
+            case.failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }

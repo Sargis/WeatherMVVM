@@ -21,8 +21,7 @@ struct Daily: Codable {
 }
 
 struct Data: Codable {
-    let time: Date
+    let time: Int
     let icon: String
-    let precipType: String
-    let temperatureMin: Int
+    let temperatureMin: Double
 }

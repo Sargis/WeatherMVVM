@@ -13,18 +13,18 @@ protocol Endpoint {
 }
 
 enum Endpoints {
-    
+
     static var root: String {
-        return "https://api.darksky.net/forecast/"
+        return "https://api.darksky.net/"
     }
-    
+
     enum Get: Endpoint {
         case weather
-        
+
         var path: String {
-            return "forecast/3e7e519ea86c8e3fcf67c0f4870513d7/%d,%d"
+            return "forecast/3e7e519ea86c8e3fcf67c0f4870513d7/"
         }
-        
+
         var url: String {
             return "\(Endpoints.root)\(path)"
         }
