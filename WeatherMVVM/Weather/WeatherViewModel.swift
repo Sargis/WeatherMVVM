@@ -9,4 +9,14 @@ import Foundation
 
 class WeatherViewModel: WeatherViewModelProtocol {
 
+    var weather: [Weather]?
+    var city: City
+
+    init(_ city: City) {
+        self.city = city
+    }
+
+    func fetchWeathers(_ handler: @escaping ((Error?) -> Void)) {
+
+    }
 }

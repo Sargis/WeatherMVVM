@@ -13,7 +13,7 @@ class WeatherCoordinator: WeatherCoordinatorProtool {
     func start() -> UIViewController {
         let weatherController = WeatherViewController()
         weatherController.coordinator = self
-        weatherController.viewModel = WeatherViewModel()
+        weatherController.viewModel = WeatherViewModel(.moscow)
         return weatherController
     }
 }
