@@ -31,7 +31,7 @@ class NetworkManager {
         task.resume()
     }
 
-    func getWeathers(_ city: City, completion: @escaping (Result<Weather, Error>) -> Void) {
+    func getWeather(_ city: City, completion: @escaping (Result<Weather, Error>) -> Void) {
         let urlString = "\(Endpoints.Get.weather.url)\(city.location.0),\(city.location.1)"
         guard let serviceUrl = URL(string: urlString) else {
             print("Error building URL object")
@@ -41,7 +41,9 @@ class NetworkManager {
         request.httpMethod = "GET"
 
         self.request(type: Weather.self, urlRequest: request) { response in
-            completion(response)
+            DispatchQueue.main.async {
+                completion(response)
+            }
         }
     }
 }
